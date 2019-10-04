@@ -20,18 +20,25 @@ var reset = function () {
 }
 
 var updateGuessesLeft = function() {
-    document.querySelector("#guesses-left").innerHTML = guessesLeft;
+    document.querySelector("#guessLeft").innerHTML = guessesLeft;
   };
   
   var updateLetterToGuess = function() {
     // Here we get a random letterToGuess and assign it based on a random generator (only looking at a, b, or c)
     letterToGuess = letters[Math.floor(Math.random() * letters.length)];
   };
-  
-  var updateGuessesSoFar = function() {
-    // Here we take the guesses the user has tried -- then display it as letters separated by commas.
-    document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
+
+  var reset = function() {
+    guessesLeft = 9;
+    letterUser = [];
+    updateLetterToGuess();
+    updateGuessesLeft();
+    updateGuessesSoFar();
   };
+  
+  // Execute on page load.
+  updateLetterToGuess();
+  updateGuessesLeft();
   
 
 // whenever the user keys down a letter the following will happen:
